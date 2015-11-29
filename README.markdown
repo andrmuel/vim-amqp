@@ -12,7 +12,7 @@ It provides the following commands:
 I recommend using [pathogen.vim](https://github.com/tpope/vim-pathogen):
 
     cd ~/.vim/bundle
-    git clone git://github.com/andrmuel/vim-curl.git
+    git clone git://github.com/andrmuel/vim-amqp.git
 
 ## Bugs
 
