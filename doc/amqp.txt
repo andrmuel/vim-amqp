@@ -1,0 +1,133 @@
+*amqp.txt*  A simple interface to AMQP for Vim
+
+Author:  Andreas Müller <http://0x7.ch/>
+
+This plugin is only available if 'compatible' is not set.
+
+
+INTRODUCTION                                    *amqp*
+
+amqp.vim is a simple interface to get events from and publish events to AMQP.
+
+
+COMMANDS                                        *amqp-commands*
+
+The plugin provides the following commands:
+
+                                                *amqp-:AMQPGet*
+:AMQPGet [queue]            Get an event from the given AMQP queue (if no
+                            argument is given, default queue is used).
+
+
+                                                *amqp-:AMQPPublish*
+:{range}AMQPPublish [exchange]
+                            Publish the selected range as event to the given
+                            AMQP exchange (if no argument is given, the
+                            default exchange is used).
+
+
+GLOBAL SETTINGS                                 *amqp-global-settings*
+
+                                                *'g:amqp_mappings'*
+Default: 0
+Values: 0 or 1.
+
+Whether to provide the default mappings (see below).
+
+
+                                                *'g:amqp_host'*
+Default: 'localhost'
+
+Host of the AMQP server.
+
+                                                *'g:amqp_port'*
+Default: '5672'
+
+Port of the AMQP server.
+
+
+                                                *'g:amqp_vhost'*
+Default: ''
+
+AMQP vhost to use for all requests.
+
+
+                                                *'g:amqp_user'*
+Default: 'guest'
+
+AMQP user name.
+
+
+                                                *'g:amqp_password'*
+Default: 'guest'
+
+AMQP password.
+
+
+                                                *'g:amqp_default_exchange'*
+Default: ''
+
+Default AMQP exchange to use for publishing if none given as command argument.
+
+
+                                                *'g:amqp_default_queue'*
+Default: ''
+
+Default AMQP queue to use for getting events if none given as command argument.
+
+                                                *'g:amqp_default_filetype'*
+Default: ''
+
+Vim filetype for result buffer.
+
+                                                *'g:amqp_url'*
+Default: 'amqp://'.g:amqp_user.':'.g:amqp_password.'@'.g:amqp_host.':'.g:amqp_port.'/'.g:amqp_vhost
+
+AMQP URL to use for requests.
+
+                                                *'g:amqp_filter'*
+Default: ''
+
+External filter to use for formatting received AMQP data.
+
+E.g. for JSON data, jq can be used:
+
+let g:amqp_filter = "jq '.'"
+
+
+LOCAL SETTINGS                                  *amqp-local-settings*
+                                                *'b:amqp_default_exchange'*
+                                                *'b:amqp_default_queue'*
+                                                *'b:amqp_default_filetype'*
+                                                *'b:amqp_filter'*
+
+The settings 'g:amqp_default_exchange', 'g:amqp_default_queue',
+'g:amqp_default_filetype' and 'g:amqp_filter' can be overwritten with buffer
+settings of the same name.
+
+
+MAPPINGS                                        *amqp-mappings*
+
+If enabled by setting 'g:amqp_mappings' to 1, the following mappings are
+provided:
+
+Normal mode:
+
+                                                *'amqp-<leader>ag'*
+Get event from default AMQP queue.
+
+                                                *'amqp-<leader>ap'*
+Publish whole buffer to default AMQP exchange.
+
+Visual mode:
+                                                *'amqp-<leader>ap'*
+Publish selected range to default AMQP exchange.
+
+
+ABOUT                                           *amqp-about*
+
+Grab the latest version or report a bug on GitHub:
+
+https://github.com/andrmuel/vim-amqp
+
+ vim:tw=78:et:ft=help:norl:
